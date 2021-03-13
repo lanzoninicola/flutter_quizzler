@@ -145,7 +145,7 @@ class ScoreKeeper extends StatelessWidget {
   }
 }
 
-void showDialogQuizCompleted(context) {
+void showDialogQuizCompleted(BuildContext context) {
   Alert(
     context: context,
     type: AlertType.info,
