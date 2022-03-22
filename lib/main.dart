@@ -4,11 +4,15 @@ import 'package:rflutter_alert/rflutter_alert.dart';
 
 QuizBrain quizBrain = QuizBrain();
 
+
+
 void main() {
   runApp(Quizzler());
 }
 
 class Quizzler extends StatefulWidget {
+  
+
   @override
   _QuizzlerState createState() => _QuizzlerState();
 }
@@ -25,11 +29,6 @@ class _QuizzlerState extends State<Quizzler> {
 
     setState(() {
       answerKeeper = [...nextAnswerKeeper];
-
-      if (quizBrain.isQuizCompleted()) {
-        showDialogQuizCompleted(context);
-        answerKeeper = [];  
-      }
     });
   }
 
@@ -42,10 +41,6 @@ class _QuizzlerState extends State<Quizzler> {
 
     setState(() {
       answerKeeper = [...nextAnswerKeeper];
-      if (quizBrain.isQuizCompleted()) {
-        showDialogQuizCompleted(context);
-        answerKeeper = [];
-      }
     });
   }
 
@@ -82,15 +77,20 @@ class _QuizzlerState extends State<Quizzler> {
                         backgroundColor:
                             MaterialStateProperty.all(Colors.green[400])),
                     onPressed: () {
-                      bool answer = quizBrain.getQuestionAnswer();
+                      // bool answer = quizBrain.getQuestionAnswer();
 
-                      if (answer == true) {
-                        trackCorrectAnswer();
-                      } else {
-                        trackIncorrectAnswer();
-                      }
+                      // if (answer == true) {
+                      //   trackCorrectAnswer();
+                      // } else {
+                      //   trackIncorrectAnswer();
+                      // }
 
                       quizBrain.getNextQuestion();
+
+                      // if (quizBrain.isQuizCompleted()) {
+                      //   showDialogQuizCompleted(context);
+                      //   answerKeeper = [];
+                      // }
                     },
                     child: Text(
                       "TRUE",
@@ -109,15 +109,20 @@ class _QuizzlerState extends State<Quizzler> {
                         backgroundColor:
                             MaterialStateProperty.all(Colors.red[400])),
                     onPressed: () {
-                      bool answer = quizBrain.getQuestionAnswer();
+                      // bool answer = quizBrain.getQuestionAnswer();
 
-                      if (answer == false) {
-                        trackCorrectAnswer();
-                      } else {
-                        trackIncorrectAnswer();
-                      }
+                      // if (answer == false) {
+                      //   trackCorrectAnswer();
+                      // } else {
+                      //   trackIncorrectAnswer();
+                      // }
 
                       quizBrain.getNextQuestion();
+
+                      // if (quizBrain.isQuizCompleted()) {
+                      //   showDialogQuizCompleted(context);
+                      //   answerKeeper = [];
+                      // }
                     },
                     child: Text("FALSE",
                         style: TextStyle(
@@ -146,6 +151,8 @@ class ScoreKeeper extends StatelessWidget {
 }
 
 void showDialogQuizCompleted(BuildContext context) {
+  print('showDialogQuizCompleted - context: $context');
+
   Alert(
     context: context,
     type: AlertType.info,
